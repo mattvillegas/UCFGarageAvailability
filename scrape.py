@@ -32,10 +32,6 @@ def getGarageInfo():
 			percentages.insert(i, percent)
 			i+=1 # <---- x_x 
 
-	# not needed quite yet but will be useful for when I try to integrate this with Alexa
-	garageDict = dict(zip(garageNames,percentages))
-
-
 def returnPercent(garageLetter, myDict):
 	return myDict.get(garageLetter)
 
