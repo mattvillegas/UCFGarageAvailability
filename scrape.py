@@ -13,7 +13,7 @@ def getGarageInfo():
 	soup = BeautifulSoup(page.content, 'html.parser')
 
 	newlist = list(soup.find_all('script', type="text/javascript"))
-	i = 0
+	i = 0 #dear lord I need to fix this and learn how to actually use range
 	garageNames = ['A', 'B', 'C', 'D', 'H', 'I', 'Libra']
 	percentages = []
 	for item in newlist:
@@ -24,7 +24,7 @@ def getGarageInfo():
 			else:
 				print("Garage " + garageNames[i]+ " is at " + percent+"% capacity")
 			percentages.insert(i, percent)
-			i+=1
+			i+=1 # <---- x_x 
 
 
 	garageDict = dict(zip(garageNames,percentages))
