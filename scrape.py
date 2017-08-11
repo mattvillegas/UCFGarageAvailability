@@ -15,7 +15,7 @@ def getGarageInfo():
 	
 	#create a list of all javascript scripts in the html file
 	newlist = list(soup.find_all('script', type="text/javascript"))
-	i = 0 #dear lord I need to fix this and learn how to actually use range
+	i = 0 #need to update so that I can use for i in range which isn't working
 	
 	garageNames = ['A', 'B', 'C', 'D', 'H', 'I', 'Libra']
 	percentages = []
@@ -30,7 +30,7 @@ def getGarageInfo():
 			else:
 				print("Garage " + garageNames[i]+ " is at " + percent+"% capacity")
 			percentages.insert(i, percent)
-			i+=1 # <---- x_x 
+			i+=1 #ugh very much unpythonic
 
 def returnPercent(garageLetter, myDict):
 	return myDict.get(garageLetter)
