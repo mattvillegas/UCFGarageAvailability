@@ -32,10 +32,6 @@ def getGarageInfo():
 			percentages.insert(i, percent)
 			i+=1 #ugh very much unpythonic
 
-def returnPercent(garageLetter, myDict):
-	return myDict.get(garageLetter)
-
-
 
 if __name__ == '__main__':
 	main()
