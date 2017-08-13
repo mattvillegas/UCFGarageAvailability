@@ -11,8 +11,6 @@ ask = Ask(app, "/")
 
 # launch intent immediately calls the Garage info function so that it is read off on launch
 @ask.launch
-
-
 def getGarageInfo():
 	# downloads the HTML from the UCF Parking Garage page
 	page = requests.get('http://secure.parking.ucf.edu/GarageCount/iframe.aspx')
@@ -46,7 +44,6 @@ def getGarageInfo():
 
 
 	return statement("<speak>"+message+"</speak>")
-
 
 # ask intents in case they want a repeat of the capacities
 @ask.intent("Garage")
