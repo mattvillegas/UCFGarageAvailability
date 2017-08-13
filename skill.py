@@ -4,11 +4,12 @@ import re
 from flask import Flask
 from flask_ask import Ask, statement, question, session
 
+# setting up Flask app
 app = Flask(__name__)
 
 ask = Ask(app, "/")
 
-
+# launch intent immediately calls the Garage info function so that it is read off on launch
 @ask.launch
 
 
@@ -39,12 +40,12 @@ def getGarageInfo():
 	return statement("<speak>"+message+"</speak>")
 
 
-
+# ask intents in case they want a repeat of the capacities
 @ask.intent("Garage")
 def Garage():
 	print("Reached Garage Function")
 	return getGarageInfo()
-
+# for when the user asks for help
 @ask.intent("AMAZON.HelpIntent")
 def help():
 	return statement("This skill tells you how full each of the garages are at UCF, just launching the skill should tell you the capacities")
