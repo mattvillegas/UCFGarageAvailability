@@ -68,11 +68,6 @@ def sayAllGarages():
 
 	return statement("<speak>" + message + "</speak>")
 
-
-
-	
-
-
 @ask.intent("AMAZON.HelpIntent")
 def help():
 	return statement("This skill tells you how full each of the garages are at UCF, just launching the skill should tell you the capacities")
