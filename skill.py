@@ -11,7 +11,7 @@ ask = Ask(app, "/")
 
 @ask.launch
 def launchMsg():
-	return statement("Hello. Please say the name of the garage")
+	return statement("Hello. Please say the name of the garage, or say all for a list of all garage capacities, or you can ask for the emptiest garage")
 
 # parses garage information into two lists
 def getGarageInfo():
