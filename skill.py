@@ -58,7 +58,7 @@ def Garage(GarageName):
 	GarageName = GarageName.capitalize()
 	return statement("Garage {}".format(GarageName) + " is at {}".format(garageDict[GarageName]) + " percent capacity")
 
-# called when the user aks for information for all garages
+# called when the user asks for information for all garages
 @ask.intent("AllGarages")
 def sayAllGarages():
 	garageNames, percentages = getGarageInfo()
@@ -68,9 +68,25 @@ def sayAllGarages():
 
 	return statement("<speak>" + message + "</speak>")
 
+# help message
 @ask.intent("AMAZON.HelpIntent")
 def help():
 	return statement("This skill tells you how full each of the garages are at UCF, just launching the skill should tell you the capacities")
+
+# called when the user wants to know the emptiest garage
+@ask.intent("EmptiestGarage")
+def findEmptiest():
+	garageNames, percentages = getGarageInfo()
+	minIndex = 0
+	minPercentage = 100
+	for i in range(0,7):
+		if(int(percentages[i]) < minPercentage):
+			minPercentage = int(percentages[i])
+			minIndex = i
+
+	return statement("Garage {}".format(garageNames[minIndex]) + " is the emptiest at {}".format(percentages[minIndex]) + " percent capacity")
+
+
 	
 if __name__ == '__main__':
 	app.run(debug=True)
