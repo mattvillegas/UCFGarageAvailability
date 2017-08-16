@@ -29,9 +29,6 @@ def getGarageInfo():
 	garageNames = ['A', 'B', 'C', 'D', 'H', 'I', 'Libra']
 	percentages = []
 
-	# creates string that will be used for the alexa statement
-	message = ''
-
 	# loop through all of the scripts and insert values into the lists
 	for item in newlist:
 
