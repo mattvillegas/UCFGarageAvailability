@@ -11,7 +11,7 @@ ask = Ask(app, "/")
 
 @ask.launch
 def launchMsg():
-	return statement("Hello. Please say the name of the garage, or say all for a list of all garage capacities, or you can ask for the emptiest garage")
+	return statement("Welcome to UCF Garage information. For help, say help")
 
 # parses garage information into two lists
 def getGarageInfo():
@@ -28,6 +28,9 @@ def getGarageInfo():
 	# create lists to store names of garages and their percentages
 	garageNames = ['A', 'B', 'C', 'D', 'H', 'I', 'Libra']
 	percentages = []
+
+	# creates string that will be used for the alexa statement
+	message = ''
 
 	# loop through all of the scripts and insert values into the lists
 	for item in newlist:
@@ -68,7 +71,12 @@ def sayAllGarages():
 # help message
 @ask.intent("AMAZON.HelpIntent")
 def help():
-	return statement("This skill tells you how full each of the garages are at UCF, just launching the skill should tell you the capacities")
+	return statement(
+		"This skill tells you how full each of the garages are at UCF, and can tell you which garage is the emptiest. "
+		"To hear the capacities of individual garages, you can ask how full is garage A. "
+		"To hear the capacities of all of the garages, you can say all. "
+		"To hear which garage is the emptiest, ask what is the emptiest garage."
+		)
 
 # called when the user wants to know the emptiest garage
 @ask.intent("EmptiestGarage")
@@ -82,7 +90,6 @@ def findEmptiest():
 			minIndex = i
 
 	return statement("Garage {}".format(garageNames[minIndex]) + " is the emptiest at {}".format(percentages[minIndex]) + " percent capacity")
-
 
 	
 if __name__ == '__main__':
