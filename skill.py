@@ -4,19 +4,19 @@ import re
 from flask import Flask
 from flask_ask import Ask, statement
 
+# boilerplate to set up Flask
 app = Flask(__name__)
 
 ask = Ask(app, "/")
 
-
+# launch message
 @ask.launch
 def launchMsg():
     return statement("Welcome to UCF Garage information. For help, say help")
 
 # parses garage information into two lists
-
-
 def getGarageInfo():
+   
     # get HTML from the parking site
     page = requests.get(
         'http://secure.parking.ucf.edu/GarageCount/iframe.aspx')
@@ -44,16 +44,12 @@ def getGarageInfo():
             i += 1  # see TODO above
     return garageNames, percentages
 
-# creates a dictionary from the two lists
-
-
+# creates a dictionary from two lists
 def createGarageDict(listOne, listTwo):
     garageDict = dict(zip(listOne, listTwo))
     return garageDict
 
 # called when the user asks for a specific garage
-
-
 @ask.intent("Garage")
 def Garage(GarageName):
     garageNames, percentages = getGarageInfo()
@@ -66,8 +62,6 @@ def Garage(GarageName):
                      " percent capacity")
 
 # called when the user asks for information for all garages
-
-
 @ask.intent("AllGarages")
 def sayAllGarages():
     garageNames, percentages = getGarageInfo()
@@ -80,8 +74,6 @@ def sayAllGarages():
     return statement("<speak>" + message + "</speak>")
 
 # help message
-
-
 @ask.intent("AMAZON.HelpIntent")
 def help():
     return statement(
@@ -94,8 +86,6 @@ def help():
     )
 
 # called when the user wants to know the emptiest garage
-
-
 @ask.intent("EmptiestGarage")
 def findEmptiest():
     garageNames, percentages = getGarageInfo()
