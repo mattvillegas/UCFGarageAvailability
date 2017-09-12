@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 from flask import Flask
-from flask_ask import Ask, statement
+from flask_ask import Ask, statement, question
 
 # boilerplate to set up Flask
 app = Flask(__name__)
@@ -12,7 +12,7 @@ ask = Ask(app, "/")
 # launch message
 @ask.launch
 def launchMsg():
-    return statement("Welcome to UCF Garage information. For help, say help")
+    return question("Welcome to UCF Garage information. For help, say help")
 
 # parses garage information into two lists
 def getGarageInfo():
